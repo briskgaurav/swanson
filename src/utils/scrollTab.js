@@ -19,13 +19,16 @@ export const CORNER = {
 }
 
 // Builds a clip-path that keeps the whole canvas EXCEPT the tab, using an
-// even-odd hole. `cw`/`ch` are the canvas CSS size in px.
-export function buildTabClipPath(cw, ch) {
+// even-odd hole. `cw`/`ch` are the canvas CSS size in px. `reveal` (0→1)
+// shrinks both notches to nothing so the canvas becomes a full rectangle —
+// used near the end of the scroll to expand the sequence to full screen.
+export function buildTabClipPath(cw, ch, reveal = 0) {
   const vw = window.innerWidth / 100
-  const W = TAB.width * vw
-  const H = TAB.height * vw
-  const r = TAB.convex * vw
-  const c = TAB.concave * vw
+  const k = 1 - Math.min(Math.max(reveal, 0), 1)
+  const W = TAB.width * vw * k
+  const H = TAB.height * vw * k
+  const r = TAB.convex * vw * k
+  const c = TAB.concave * vw * k
 
   const x0 = cw - W // tab left edge
   const y0 = ch - H // tab top edge
@@ -47,10 +50,10 @@ export function buildTabClipPath(cw, ch) {
   ].join(" ")
 
   // Top-right corner notch — vertical mirror of the tab geometry above.
-  const CW = CORNER.width * vw
-  const CH = CORNER.height * vw
-  const cr = CORNER.convex * vw
-  const cc = CORNER.concave * vw
+  const CW = CORNER.width * vw * k
+  const CH = CORNER.height * vw * k
+  const cr = CORNER.convex * vw * k
+  const cc = CORNER.concave * vw * k
   const cx0 = cw - CW // notch left edge
 
   const cornerHole = [

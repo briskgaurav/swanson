@@ -1,6 +1,9 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link';
 import React from 'react'
+import Swaptext from '../Reusable/Swaptext';
 
 // Define navigation links
 const links = [
@@ -9,6 +12,7 @@ const links = [
     { href: '#team', label: 'Team' },
     { href: '#governance', label: 'Governance' },
 ];
+
 
 export default function Navbar() {
     return (
@@ -35,24 +39,22 @@ export default function Navbar() {
                         {/* Map navigation links */}
                         {links.map((link, idx) => (
                             <Link
-
                                 key={link.label}
                                 href={link.href}
-                                className={`text14 ${idx === 0 ? 'pl-[3vw]' : ''}`}
-
+                                className={`text14 group ${idx === 0 ? 'pl-[3vw]' : ''}`}
                             >
-                                {link.label}
+                                <Swaptext label={link.label} />
                             </Link>
                         ))}
 
-                        <button className='text14 bg-primary text-background flex px-[1.2vw] py-[.7vw] rounded-sm items-center gap-[.8vw]'>
-                            <span className='size-[.7vw] block relative rounded-full '>
+                        <button
+                            className='text14 group bg-primary text-background flex px-[1.2vw] py-[.7vw] rounded-sm items-center gap-[.8vw]'
+                        >
+                            <span className='size-[.7vw] block relative rounded-full transition-transform duration-500 ease-out group-hover:rotate-90'>
                                 <Image src={'/assets/svgs/plus.svg'} alt='plus' fill className='object-contain h-full w-full' />
                             </span>
-                            Schedule
+                            <Swaptext label="Schedule" />
                         </button>
-
-
                     </div>
                     {/* BUTTONS */}
                     <div className='flex items-center gap-[.5vw] flex-col'>
