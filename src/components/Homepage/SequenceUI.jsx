@@ -150,37 +150,37 @@ export default function SequenceUI() {
     }, [])
 
     return (
-        <div className="absolute z-10 flex h-full w-full flex-col items-start justify-end p-[4vw]">
+        <div className="absolute z-10 flex h-full w-full flex-col items-start justify-end p-[4vw] max-md:p-[6vw]">
             <div className="h-fit w-full">
-                <div className="relative mb-[1vw] h-[2vw] w-full">
+                <div className="relative mb-[1vw] h-[2vw] w-full max-md:mb-[4vw] max-md:h-[5vw]">
                     <div
                         ref={titleRef}
-                        className="absolute inset-0 flex w-full items-center gap-[1vw]"
+                        className="absolute inset-0 flex w-full items-center gap-[1vw] max-md:gap-[2vw]"
                     >
-                        <span className="h-[.06vw] w-[6vw] bg-foreground" />
-                        <p className="text30">Market Capitalization Company</p>
+                        <span className="h-[.06vw] w-[6vw] bg-foreground max-md:h-[0.2vw] max-md:w-[8vw]" />
+                        <p className="text30 max-md:text-[3.5vw]!">Market Capitalization Company</p>
                     </div>
                     <div
                         ref={title2Ref}
-                        className="absolute inset-0 flex w-full items-center gap-[1vw]"
+                        className="absolute inset-0 flex w-full items-center gap-[1vw] max-md:gap-[2vw]"
                     >
-                        <span className="h-[.06vw] w-[6vw] bg-foreground" />
-                        <p className="text30">Strategic Growth Partners</p>
+                        <span className="h-[.06vw] w-[6vw] bg-foreground max-md:h-[0.2vw] max-md:w-[8vw]" />
+                        <p className="text30 max-md:text-[3.5vw]!">Strategic Growth Partners</p>
                     </div>
                     <div
                         ref={title3Ref}
-                        className="absolute inset-0 flex w-full items-center gap-[1vw]"
+                        className="absolute inset-0 flex w-full items-center gap-[1vw] max-md:gap-[2vw]"
                     >
-                        <span className="h-[.06vw] w-[6vw] bg-foreground" />
-                        <p className="text30">Legacy Wealth Management</p>
+                        <span className="h-[.06vw] w-[6vw] bg-foreground max-md:h-[0.2vw] max-md:w-[8vw]" />
+                        <p className="text30 max-md:text-[3.5vw]!">Legacy Wealth Management</p>
                     </div>
                 </div>
 
-                <div className="relative h-[15vw] w-[70vw]">
+                <div className="relative h-[15vw] w-[70vw] max-md:h-[58vw] max-md:w-full">
                     <div ref={containerTextRef} className="absolute h-full w-full">
                         <p
                             ref={paraRef}
-                            className="text20 text-secondary absolute left-[40vw] top-[3vw] w-[13vw] font-medium"
+                            className="text20 text-secondary absolute left-[40vw] top-[3vw] w-[13vw] font-medium max-md:left-0! max-md:top-[48vw]! max-md:bottom-0 max-md:w-[70vw]!"
                         >
                             Accredited Investors only. 99 spots available
                         </p>
@@ -205,12 +205,12 @@ export default function SequenceUI() {
 
             <div
                 ref={sectionMeterRef}
-                className="mt-[4vw] flex w-fit items-center gap-[1vw]"
+                className="mt-[4vw] flex w-fit max-md:justify-center max-md:w-full max-md:items-center items-center gap-[1vw] max-md:mt-[8vw] max-md:gap-[3vw]"
             >
                 <p className="text20">01</p>
                 <div
                     ref={meterTrack1Ref}
-                    className="relative h-[.1vw] w-[6vw] shrink-0 overflow-hidden bg-foreground/20"
+                    className="relative h-[.1vw] w-[6vw] shrink-0 overflow-hidden bg-foreground/20 max-md:h-[0.5vw] max-md:w-[16vw]!"
                 >
                     <span
                         ref={meterFill1Ref}
@@ -220,7 +220,7 @@ export default function SequenceUI() {
                 <p className="text20">02</p>
                 <div
                     ref={meterTrack2Ref}
-                    className="relative h-[.1vw] w-0 shrink-0 overflow-hidden bg-foreground/20"
+                    className="relative h-[.1vw] w-0 shrink-0 overflow-hidden bg-foreground/20 max-md:h-[0.5vw] max-md:w-[16vw]!"
                 >
                     <span
                         ref={meterFill2Ref}
@@ -229,9 +229,9 @@ export default function SequenceUI() {
                 </div>
                 <p className="text20">03</p>
             </div>
-            <div ref={scrollToExploreRef} className="absolute bottom-[3vw] left-1/2 -translate-x-1/2 w-[70vw] flex flex-col items-center justify-center z-10">
-                <div className="flex items-center justify-center gap-[1.2vw]">
-                    <div className="relative flex items-center justify-center size-[4vw]">
+            <div ref={scrollToExploreRef} className="absolute bottom-[3vw] left-1/2 -translate-x-1/2 w-[70vw] flex flex-col items-center justify-center z-10 max-md:bottom-[8vw] max-md:w-full">
+                <div className="flex items-center justify-center gap-[1.2vw] max-md:gap-[2vw]">
+                    <div className="relative flex items-center justify-center size-[4vw] max-md:size-[9vw]">
                         <Image
                             src="/assets/svgs/plus.svg"
                             alt="Swanson Reserve"
@@ -244,7 +244,7 @@ export default function SequenceUI() {
                 <div>
                     <span className="text110 font-medium leading-none text-white">Swanson Reserve</span>
                 </div>
-                <div className='mt-[2vw]'>
+                <div className='mt-[2vw] max-md:mt-[5vw]'>
                     <div className="flex flex-col items-center">
                         <p className='text20'>SCROLL TO EXPLORE</p>
                         <svg

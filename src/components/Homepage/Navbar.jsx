@@ -54,6 +54,7 @@ export default function Navbar() {
 
 
                     </div>
+                    {/* BUTTONS */}
                     <div className='flex items-center gap-[.5vw] flex-col'>
                         <span className='w-[4vw] h-[.2vw] block relative rounded-full bg-primary' />
                         <span className='w-[4vw] h-[.2vw] block relative rounded-full bg-primary' />
