@@ -38,15 +38,15 @@
   animation: scalePulse 1.5s linear infinite;
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-montserrat);
+  overflow-x: hidden;
 }
 
-.self-padd{
-  padding: 3vw 3vw;
+.self-padd {
+  padding: 4vw 3vw;
 }
 .text14 {
   font-size: 0.7vw;
@@ -75,14 +75,19 @@ body {
   font-size: 6vw;
 }
 
-
 /* Responsive font sizes for screens smaller than 1025px */
 @media (max-width: 1025px) {
+  .self-padd {
+    padding: 4vw 8vw;
+  }
   .text14 {
     font-size: 3.2vw;
   }
   .text20 {
     font-size: 3.5vw;
+  }
+  .text24 {
+    font-size: 4vw;
   }
   .text30 {
     font-size: 7vw;

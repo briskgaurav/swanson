@@ -3,10 +3,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import gsap from 'gsap'
+import { useLenis } from 'lenis/react'
 
 export default function Loader({ visible = true }) {
     const containerRef = useRef(null)
     const [hidden, setHidden] = useState(false)
+    const lenis = useLenis()
+
+    useEffect(() => {
+        if (!lenis) return
+        if (hidden) {
+            lenis.start()
+        } else {
+            lenis.stop()
+            window.scrollTo(0, 0)
+        }
+    }, [lenis, hidden])
 
     useEffect(() => {
         if (visible) return
@@ -29,7 +41,7 @@ export default function Loader({ visible = true }) {
     return (
         <div
             ref={containerRef}
-            className="absolute inset-0 z-500 grid place-items-center bg-background text-foreground"
+            className="fixed inset-0 z-500 grid place-items-center bg-background text-foreground"
         >
             <Image
                 src="/assets/svgs/swan.svg"

@@ -16,11 +16,11 @@ const links = [
 
 export default function Navbar() {
     return (
-        <nav className="h-fit fixed px-[3.5vw] py-[2vw] top-0 left-0 z-50 w-full">
+        <nav className="h-fit fixed px-[3.5vw] py-[2vw] max-md:px-5 max-md:py-4 top-0 left-0 z-50 w-full">
             <div className="flex items-center justify-between w-full">
 
-                <div className="flex items-center gap-[1vw]">
-                    <div className="size-[3.5vw] relative">
+                <div className="flex items-center gap-[1vw] max-md:gap-3">
+                    <div className="size-[3.5vw] max-md:size-[10vw] relative">
                         <Image
                             src={'/assets/svgs/swan.svg'}
                             alt="swan"
@@ -29,12 +29,12 @@ export default function Navbar() {
                             priority
                         />
                     </div>
-                    <p className="text50 font-philosopher">Swanson</p>
+                    <p className="text50 font-philosopher max-md:hidden">Swanson</p>
                 </div>
-                <div className='flex items-center gap-[1vw]'>
+                <div className='flex items-center gap-[1vw] max-md:gap-4'>
 
                     {/* Navigation Links and Schedule button bar */}
-                    <div className="flex items-center gap-[5vw] bg-white/5 backdrop-blur-md rounded-md p-[.5vw]">
+                    <div className="flex items-center gap-[5vw] bg-white/5 backdrop-blur-md rounded-md p-[.5vw] max-md:hidden">
 
                         {/* Map navigation links */}
                         {links.map((link, idx) => (
@@ -57,9 +57,9 @@ export default function Navbar() {
                         </button>
                     </div>
                     {/* BUTTONS */}
-                    <div className='flex items-center gap-[.5vw] flex-col'>
-                        <span className='w-[4vw] h-[.2vw] block relative rounded-full bg-primary' />
-                        <span className='w-[4vw] h-[.2vw] block relative rounded-full bg-primary' />
+                    <div className='flex items-center gap-[.5vw] max-md:gap-2 flex-col'>
+                        <span className='w-[4vw] max-md:w-10 h-[.2vw] max-md:h-[2px] block relative rounded-full bg-primary' />
+                        <span className='w-[4vw] max-md:w-10 h-[.2vw] max-md:h-[2px] block relative rounded-full bg-primary' />
                     </div>
                 </div>
 
