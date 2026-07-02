@@ -7,7 +7,7 @@ export default function DiagonalLines({ className = "" }) {
 
      {/* SIDE BLURS */}
     <div
-      className="absolute size-[50vw] blur-3xl left-[-32vw] top-[-15vw] opacity-15 rounded-full inset-0"
+      className="absolute size-[50vw] z-200blur-3xl left-[-32vw] top-[-15vw] opacity-15 rounded-full inset-0"
       style={{
         background: 'radial-gradient(circle, #AA7F2C 0%, #AA7F2C88 65%, transparent 100%)',
       }}

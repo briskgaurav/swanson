@@ -55,7 +55,7 @@ export default function HeroSequence() {
     section: sectionRef,
   } = refs;
 
-  const showLoader = !ready || !minTimeElapsed;
+  const showLoader = !ready || !minTimeElapsed || loadingProgress < 0.20;
 
   // Cut the scroll tab out of the sharp video so the blurred background shows
   // through it, seamlessly continuous with the blurred padding border. Near the

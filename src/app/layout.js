@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       className={`${montserrat.variable} ${philosopher.variable} h-full antialiased`}
     >
       <LenisSmoothScroll />
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-dvh flex flex-col">{children}</body>
     </html>
   );
 }

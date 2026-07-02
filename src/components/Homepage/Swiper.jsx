@@ -188,7 +188,7 @@ export default function Swiper() {
   }, []); 
 
   return (
-    <section className="relative max-md:py-[20vw] mt-[-20vw] max-md:mt-[-35vh] w-full pt-[6vw] bg-background overflow-hidden pb-[clamp(40px,5vw,80px)]">
+    <section className="relative max-md:py-[20vw] mt-[-20vw] max-md:mt-[-35vh] w-full pt-[6vw]  overflow-hidden  pb-[clamp(40px,5vw,80px)]">
 
         <h2
           className="text110 -translate-y-[-4vw] max-md:translate-y-0! text-foreground text-center font-medium"

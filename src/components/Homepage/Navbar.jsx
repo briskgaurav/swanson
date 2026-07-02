@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className="h-fit fixed px-[3.5vw] py-[2vw] max-md:px-5 max-md:py-4 top-0 left-0 z-50 w-full">
             <div className="flex items-center justify-between w-full">
 
-                <div className="flex items-center gap-[1vw] max-md:gap-3">
+                <Link href={'#'} className="flex items-center gap-[1vw] max-md:gap-3">
                     <div className="size-[3.5vw] max-md:size-[10vw] relative">
                         <Image
                             src={'/assets/svgs/swan.svg'}
@@ -30,7 +30,7 @@ export default function Navbar() {
                         />
                     </div>
                     <p className="text50 font-philosopher max-md:hidden">Swanson</p>
-                </div>
+                </Link>
                 <div className='flex items-center gap-[1vw] max-md:gap-4'>
 
                     {/* Navigation Links and Schedule button bar */}
