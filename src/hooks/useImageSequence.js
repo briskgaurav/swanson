@@ -52,7 +52,7 @@ export function useImageSequence({
     const canvas = canvasRef.current
     const backgroundCanvas = backgroundCanvasRef.current
     const section = sectionRef.current
-    if (!canvas || !backgroundCanvas || !section) return
+    if (!canvas || !section) return
 
     setReady(false)
     setLoadingProgress(0)

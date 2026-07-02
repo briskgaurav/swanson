@@ -6,7 +6,7 @@ const MODEL_URL = '/assets/model/swan_compressed_png.glb'
 export function Model(props) {
   const { nodes, materials } = useGLTF(MODEL_URL)
   return (
-    <group {...props} dispose={null}>
+    <group {...props} scale={1} dispose={null}>
       <mesh
         castShadow
         receiveShadow

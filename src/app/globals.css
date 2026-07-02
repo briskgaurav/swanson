@@ -16,18 +16,47 @@
   --font-philosopher: var(--font-philosopher);
 }
 
+@keyframes scalePulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.02);
+    opacity: 0.96;
+  }
+  70% {
+    transform: scale(0.98);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.swan-loader-animation {
+  animation: scalePulse 1.5s linear infinite;
+}
+
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-montserrat);
 }
 
+.self-padd{
+  padding: 3vw 3vw;
+}
 .text14 {
   font-size: 0.7vw;
 }
 
 .text20 {
   font-size: 0.95vw;
+}
+.text24 {
+  font-size: 1.2vw;
 }
 
 .text30 {

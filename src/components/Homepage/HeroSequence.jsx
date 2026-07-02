@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useImageSequence } from "@/hooks/useImageSequence";
@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const DESKTOP_FRAME_COUNT = 255;
 const MOBILE_FRAME_COUNT = 238;
+const MIN_LOADER_MS = 2000;
 
 // Scroll progress window over which the notches collapse and the padding
 // dissolves so the canvas expands to full screen.
@@ -32,6 +33,12 @@ const getMobileFrame = (i) =>
 export default function HeroSequence() {
   const isMobile = useIsMobile();
   const canvasWrapperRef = useRef(null);
+  const [minTimeElapsed, setMinTimeElapsed] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMinTimeElapsed(true), MIN_LOADER_MS);
+    return () => clearTimeout(timer);
+  }, []);
 
   const { refs, ready, loadingProgress } = useImageSequence({
     frameCount: isMobile ? MOBILE_FRAME_COUNT : DESKTOP_FRAME_COUNT,
@@ -47,6 +54,8 @@ export default function HeroSequence() {
     backgroundCanvas: backgroundCanvasRef,
     section: sectionRef,
   } = refs;
+
+  const showLoader = !ready || !minTimeElapsed;
 
   // Cut the scroll tab out of the sharp video so the blurred background shows
   // through it, seamlessly continuous with the blurred padding border. Near the
@@ -73,7 +82,7 @@ export default function HeroSequence() {
       const k = 1 - reveal;
       wrapper.style.padding = `${CANVAS_PADDING_VW * k}vw`;
       canvas.style.borderRadius = `${CANVAS_RADIUS_REM * k}rem`;
-   
+
     };
 
     apply();
@@ -110,40 +119,43 @@ export default function HeroSequence() {
   }, [ready, canvasRef, sectionRef, isMobile]);
 
   return (
-    <section
-      ref={sectionRef}
-      id="hero-sequence"
-      className="relative h-[600vh] w-full"
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {!isMobile && (
-          <canvas
-            ref={backgroundCanvasRef}
-            className="absolute inset-0 z-1 block h-full w-full"
-          />
-        )}
-        <div className="h-full w-full  pointer-events-none! backdrop-blur-md bg-white/5 absolute inset-0 z-2" />
+    <>
+      <Loader visible={showLoader} />
 
-        <div
-          ref={canvasWrapperRef}
-          className="relative z-3 flex h-full w-full items-center justify-center p-[1.2vw] max-md:p-0!"
-        >
-          <canvas
-            ref={canvasRef}
-            className="block rounded-lg overflow-hidden h-full w-full"
-          />
-          <BorderFrame />
-          <SequenceUI />
-        </div>
+      <section
+        ref={sectionRef}
+        id="hero-sequence"
+        className="relative h-[600vh] w-full"
+      >
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          {!isMobile && (
+            <canvas
+              ref={backgroundCanvasRef}
+              className="absolute inset-0 z-1 block h-full w-full"
+            />
+          )}
+          <div className="h-full w-full  pointer-events-none! backdrop-blur-md bg-white/5 absolute inset-0 z-2" />
 
-        {ready && !isMobile && (
-          <div>
-            <ScrollIndicator />
+          <div
+            ref={canvasWrapperRef}
+            className="relative z-3 flex h-full w-full items-center justify-center p-[1.2vw] max-md:p-0!"
+          >
+            <canvas
+              ref={canvasRef}
+              className="block rounded-lg overflow-hidden h-full w-full"
+            />
+            <BorderFrame />
+            <SequenceUI />
           </div>
-        )}
 
-        {!ready && <Loader />}
-      </div>
-    </section>
+          {!showLoader && !isMobile && (
+            <div>
+              <ScrollIndicator />
+            </div>
+          )}
+
+        </div>
+      </section>
+    </>
   );
 }

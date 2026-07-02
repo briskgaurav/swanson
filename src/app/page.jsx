@@ -8,7 +8,7 @@ export default function page() {
     <>
       <Navbar />
       <HeroSequence />
-      {/* <StoryofSwansons /> */}
+      <StoryofSwansons />
     </>
   )
 }
