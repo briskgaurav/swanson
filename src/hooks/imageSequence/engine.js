@@ -1,9 +1,22 @@
 import { createCanvasRenderer } from "./canvasRenderer"
 
+// Safari/WebKit has never implemented requestIdleCallback, so this fallback
+// is what iOS always uses. It must mimic the real deadline object shape —
+// callers rely on deadline.timeRemaining(), and a bare setTimeout callback
+// receives no arguments, which used to throw and silently kill background
+// frame loading on iOS.
 const scheduleIdle =
   typeof requestIdleCallback !== "undefined"
     ? requestIdleCallback
-    : (cb) => setTimeout(cb, 1)
+    : (cb) => {
+        const start = Date.now()
+        return setTimeout(() => {
+          cb({
+            didTimeout: false,
+            timeRemaining: () => Math.max(0, 50 - (Date.now() - start)),
+          })
+        }, 1)
+      }
 
 const cancelIdle =
   typeof cancelIdleCallback !== "undefined"
